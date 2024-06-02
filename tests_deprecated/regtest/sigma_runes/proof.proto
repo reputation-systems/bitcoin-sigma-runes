@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+// SIGMA RUNES
+// Based on: https://rodarmor.com/blog/runes/
+
+// Definition of a token.
+message Token {
+    string id = 1;          // Unique identifier of the token.
+    uint32 amount = 2;      // Amount of the token.
+}
+
+// Definition of a box representing funds locked under certain conditions.
+message Box {
+    uint32 output = 1;                  // Transaction output where the funds can be spent.
+    bytes sigma_script = 2;             // Script to be validated to spend the funds.
+    repeated Token tokens = 3;          // Tokens held within the box.
+    bytes r4 = 4;                       // Additional data field 4.
+    bytes r5 = 5;                       // Additional data field 5.
+    bytes r6 = 6;                       // Additional data field 6.
+    bytes r7 = 7;                       // Additional data field 7.
+    bytes r8 = 8;                       // Additional data field 8.
+    bytes r9 = 9;                       // Additional data field 9.
+}
+
+// Definition of a group of boxes.
+message Boxgroup {
+    repeated Box boxes = 1;             // List of boxes in the group.
+}
